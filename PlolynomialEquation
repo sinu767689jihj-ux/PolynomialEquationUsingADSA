@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct Node
+{
+	int coffe,expo;
+	struct Node*next;
+}*new,*head=NULL,*temp;
+// main function
+int main()
+{
+	int element,power;
+	char ch;
+	do{
+		new=(struct Node*)malloc(sizeof(struct Node));
+		printf("Enter a element and power:");
+		scanf("%d%d",&element,&power);
+		new->coffe=element;
+		new->expo=power;
+		new->next=NULL;
+		if(head==NULL)
+		{
+			head=new;
+			temp=new;
+		}else{
+			temp->next=new;
+			temp=temp->next;
+		}
+		printf("Do want to add one more node?(y/n):");
+		scanf(" %c",&ch);
+	}while(ch=='y');
+	printf("Display polynamial List:");
+	temp=head;
+	while(temp!=NULL)
+	{
+		printf("%dx^%d",temp->coffe,temp->power);
+		temp=temp->next;
+	}
+	return 0;
+}
